@@ -1,9 +1,9 @@
 package cs276.e.cameradof;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         manager = LensManager.getInstance();
-        populateLensList();
         populateMyLensList();
         populateListView();
         registerClickCallback();
@@ -45,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = AddLens.makeIntent(MainActivity.this);
+                startActivity(intent);
             }
         });
 
@@ -60,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
 
                 Lens clickedLens = myLens.get(position);
+
+                Intent intent = CalculateDepthOfFieldActivity.makeIntent(MainActivity.this);
+                startActivity(intent);
             }
         });
     }
@@ -70,16 +72,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void populateLensList() {
-        manager.add(new Lens("Canon", 1.8, 50));
-        manager.add(new Lens("Tamron", 2.8, 90));
-        manager.add(new Lens("Sigma", 2.8, 200));
-        manager.add(new Lens("Nikon", 4, 200));
-        manager.add(new Lens("ElCheepo", 12, 24));
-        manager.add(new Lens("Leica", 5.6, 1600));
-        manager.add(new Lens("TheWide", 1.0, 16));
-        manager.add(new Lens("IWish", 1.0, 200));
-    }
+
 
     private void populateListView() {
         ArrayAdapter<Lens> adapter = new MyListAdapter();
