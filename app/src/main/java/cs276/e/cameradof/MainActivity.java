@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         populateListView();
         registerClickCallback();
 
+        //Calling AddLens Activity
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Refresh the list after edits
+    @Override
+    protected void onStart() {
+        manager = LensManager.getInstance();
+        super.onStart();
+    }
+
+    // Call CalculateDepthOfField Activity on selected lens
     private void registerClickCallback() {
         ListView list = (ListView) findViewById(R.id.listViewLens);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -72,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
+    // Display Lens List
     private void populateListView() {
         ArrayAdapter<Lens> adapter = new MyListAdapter();
         ListView list = (ListView) findViewById(R.id.listViewLens);

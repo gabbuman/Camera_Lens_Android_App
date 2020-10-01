@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/textViewMake"
         android:layout_width="350dp"
-        android:layout_height="45dp"
+        android:layout_height="30dp"
         android:layout_marginStart="18dp"
         android:layout_marginLeft="18dp"
         android:layout_marginTop="16dp"
@@ -33,10 +33,10 @@
     <TextView
         android:id="@+id/textViewFocal"
         android:layout_width="350dp"
-        android:layout_height="45dp"
+        android:layout_height="30dp"
         android:layout_marginStart="18dp"
         android:layout_marginLeft="18dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Focal Length [mm]"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputMake" />
@@ -57,14 +57,16 @@
     <TextView
         android:id="@+id/textViewAperture"
         android:layout_width="350dp"
-        android:layout_height="45dp"
+        android:layout_height="30dp"
         android:layout_marginStart="18dp"
         android:layout_marginLeft="18dp"
+        android:layout_marginTop="16dp"
         android:text="Aperture"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputFocal" />
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputAperture"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
