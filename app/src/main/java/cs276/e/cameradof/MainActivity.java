@@ -67,9 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
 
-                Lens clickedLens = myLens.get(position);
-
-                Intent intent = CalculateDepthOfFieldActivity.makeIntent(MainActivity.this);
+                Intent intent = CalculateDepthOfFieldActivity.makeIntent(MainActivity.this, position);
                 startActivity(intent);
             }
         });
