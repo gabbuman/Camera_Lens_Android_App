@@ -1,11 +1,10 @@
 package cs276.e.cameradof;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -15,8 +14,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import cs276.e.cameradof.module.Lens;
@@ -28,6 +27,7 @@ public class AddLens extends AppCompatActivity {
         return new Intent(context, AddLens.class);
     }
     private LensManager manager;
+    private int iconID = R.drawable.icon7;              // Set a default icon if no options selected
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,82 @@ public class AddLens extends AppCompatActivity {
         manager = LensManager.getInstance();
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
+
+        configureIconButton();
+    }
+
+    private void configureIconButton() {
+        ImageButton btn1 = (ImageButton) findViewById(R.id.iconButton1);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iconID = R.drawable.icon1;
+            }
+        });
+
+        ImageButton btn2 = (ImageButton) findViewById(R.id.iconButton2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iconID = R.drawable.icon2;
+            }
+        });
+
+        ImageButton btn3 = (ImageButton) findViewById(R.id.iconButton3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iconID = R.drawable.icon3;
+            }
+        });
+
+        ImageButton btn4 = (ImageButton) findViewById(R.id.iconButton4);
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iconID = R.drawable.icon4;
+            }
+        });
+
+        ImageButton btn5 = (ImageButton) findViewById(R.id.iconButton5);
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iconID = R.drawable.icon5;
+            }
+        });
+
+        ImageButton btn6 = (ImageButton) findViewById(R.id.iconButton6);
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iconID = R.drawable.icon6;
+            }
+        });
+
+        ImageButton btn7 = (ImageButton) findViewById(R.id.iconButton7);
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iconID = R.drawable.icon7;
+            }
+        });
+
+        ImageButton btn8 = (ImageButton) findViewById(R.id.iconButton8);
+        btn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iconID = R.drawable.icon8;
+            }
+        });
+
+        ImageButton btn9 = (ImageButton) findViewById(R.id.iconButton9);
+        btn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iconID = R.drawable.icon9;
+            }
+        });
 
     }
 
@@ -58,25 +134,40 @@ public class AddLens extends AppCompatActivity {
 
     }
 
+
     private boolean getUserInput(){
         EditText userTextEntryMake = (EditText) findViewById(R.id.textInputMake);
         String userMake = userTextEntryMake.getText().toString();
 
         EditText userTextEntryFocal = (EditText) findViewById(R.id.textInputFocal);
         String userFocalString = userTextEntryFocal.getText().toString();
-        int userFocal = Integer.parseInt(userFocalString);
 
         EditText userTextEntryAperture = (EditText) findViewById(R.id.textInputAperture);
         String userApertureString = userTextEntryAperture.getText().toString();
-        double userAperture = Double.parseDouble(userApertureString);
 
-        if(userAperture >= 0 && userFocal >= 0) {
-            manager.add(new Lens(userMake, userAperture, (double)userFocal));
+        if(userMake.isEmpty() ){
+            Toast.makeText(this, "Lens name must not be empty", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if(userApertureString.isEmpty()){
+            Toast.makeText(this, "Aperture value cannot be empty", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if(userFocalString.isEmpty()){
+            Toast.makeText(this, "Please enter Focal Length", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        double userAperture = Double.parseDouble(userApertureString);
+        int userFocal = Integer.parseInt(userFocalString);
+
+        if(userAperture >= 1 && userAperture <=22 && userFocal >= 0) {
+            manager.add(new Lens(userMake, userAperture, (double)userFocal, iconID));
             Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
             return true;
         }
-        else if(userAperture <= 0){
-            Toast.makeText(this, "Aperture must be non-negative",
+        else if(userAperture < 1 || userAperture > 22){
+            Toast.makeText(this, "Aperture must be in [1 22] range",
                     Toast.LENGTH_LONG).show();
             return false;
         }

@@ -12,12 +12,13 @@
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:fontFamily="serif-monospace"
         android:hint="ex: 1.5 for 1.5m"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline9"
-        android:inputType="numberDecimal"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
@@ -37,6 +38,7 @@
         android:id="@+id/textViewNearFocalDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:text="Near Focal Distance"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -47,6 +49,7 @@
         android:id="@+id/textViewFarFocalDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:text="Far Focal Distance"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -57,6 +60,7 @@
         android:id="@+id/textViewDepthOfField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:text="Depth of Field"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -67,6 +71,7 @@
         android:id="@+id/textViewHyperfocalDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:text="Hyperfocal Distance"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -77,6 +82,7 @@
         android:id="@+id/displayNearFocalDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="serif-monospace"
         android:text="Enter all values"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
@@ -88,6 +94,7 @@
         android:id="@+id/displayFarFocalDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="serif-monospace"
         android:text="Enter all values"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
@@ -99,6 +106,7 @@
         android:id="@+id/displayDepthOfField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="serif-monospace"
         android:text="Enter all values"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
@@ -110,6 +118,7 @@
         android:id="@+id/displayHyperfocalDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="serif-monospace"
         android:text="Enter all values"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
@@ -128,7 +137,9 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:fontFamily="casual"
         android:text="Photo details with lens "
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -161,7 +172,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="223dp" />
+        app:layout_constraintGuide_begin="216dp" />
 
     <View
         android:id="@+id/divider"
@@ -177,7 +188,9 @@
         android:id="@+id/textViewLensDetails"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:fontFamily="sans-serif"
         android:text="TextView"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -208,6 +221,7 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:text="Circle of Confusion [mm]"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -218,6 +232,7 @@
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:text="Distance to subject [m]"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -228,6 +243,7 @@
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:text="Selected aperture"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -250,12 +266,13 @@
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:fontFamily="serif-monospace"
         android:hint="0.029"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline8"
-        android:inputType="numberDecimal"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputAperture"
@@ -263,10 +280,11 @@
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:fontFamily="serif-monospace"
         android:hint="ex: 2.8 for F2.8"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline10"
-        android:inputType="numberDecimal"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline10" />
 </androidx.constraintlayout.widget.ConstraintLayout>

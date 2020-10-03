@@ -1,35 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/text_Make"
-        android:layout_width="133dp"
-        android:layout_height="45dp"
-        android:text="Make" />
+        android:layout_width="122dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_toStartOf="@+id/text_focal_length"
+        android:layout_toLeftOf="@+id/text_focal_length"
+        android:layout_toEndOf="@+id/imageViewLensIcon"
+        android:layout_toRightOf="@+id/imageViewLensIcon"
+        android:fontFamily="casual"
+        android:text="Make"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/text_aperture"
-        android:layout_width="135dp"
-        android:layout_height="45dp"
+        android:layout_width="95dp"
+        android:layout_height="60dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginEnd="0dp"
         android:layout_marginRight="0dp"
-        android:text="Aperture" />
+        android:fontFamily="casual"
+        android:text="Aperture"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/text_focal_length"
-        android:layout_width="128dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
+        android:layout_width="103dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="0dp"
         android:layout_marginRight="0dp"
         android:layout_toStartOf="@+id/text_aperture"
         android:layout_toLeftOf="@+id/text_aperture"
-        android:layout_toEndOf="@+id/text_Make"
-        android:layout_toRightOf="@+id/text_Make"
-        android:text="Focal Length" />
+        android:fontFamily="casual"
+        android:text="Focal Length"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/imageViewLensIcon"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="90dp"
+        android:maxHeight="60dp"
+        tools:srcCompat="@drawable/icon5" />
 </RelativeLayout>

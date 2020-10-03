@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private LensManager manager;
     private List<Lens> myLens = new ArrayList<Lens>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateMyLensList() {
-        for(Lens l : manager){
+        for (Lens l : manager) {
             myLens.add(l);
         }
     }
@@ -87,18 +89,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class MyListAdapter extends ArrayAdapter<Lens> {
-        public MyListAdapter(){
+        public MyListAdapter() {
             super(MainActivity.this, R.layout.item_lens_layout, myLens);
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View itemView = convertView;
-            if(itemView == null){
+            if (itemView == null) {
                 itemView = getLayoutInflater().inflate(R.layout.item_lens_layout, parent, false);
             }
             // Find the lens to work with
             Lens currentLens = myLens.get(position);
+
+            //Icon:
+            ImageView imageView = (ImageView) itemView.findViewById(R.id.imageViewLensIcon);
+            imageView.setImageResource(currentLens.getIconID());
 
             // Make:
             TextView makeText = (TextView) itemView.findViewById(R.id.text_Make);
@@ -123,18 +129,4 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

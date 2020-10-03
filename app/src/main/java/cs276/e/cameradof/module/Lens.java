@@ -8,13 +8,19 @@ public class Lens {
     private String make;
     private double maximumAperture;
     private double focalLength;
+    private int iconID;
 
 
-    public Lens(String make, double maximumAperture, double focalLength) {
+    public Lens(String make, double maximumAperture, double focalLength, int iconID) {
         checkIfValidArguments(make, maximumAperture, focalLength);
         this.make = make;
         this.maximumAperture = maximumAperture;
         this.focalLength = focalLength;
+        this.iconID = iconID;
+    }
+
+    public int getIconID() {
+        return iconID;
     }
 
     public String getMake() {
@@ -27,6 +33,22 @@ public class Lens {
 
     public double getFocalLength() {
         return focalLength;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public void setMaximumAperture(double maximumAperture) {
+        this.maximumAperture = maximumAperture;
+    }
+
+    public void setFocalLength(double focalLength) {
+        this.focalLength = focalLength;
+    }
+
+    public void setIconID(int iconID) {
+        this.iconID = iconID;
     }
 
     private void checkIfValidArguments(String make, double maximumAperture, double focalLength){
