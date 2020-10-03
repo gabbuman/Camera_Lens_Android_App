@@ -127,18 +127,23 @@ public class CalculateDepthOfFieldActivity extends AppCompatActivity {
         double aperture = Double.parseDouble(userApertureString);
 
         if(COC == 0){
-            Toast.makeText(this, "Circle of Confusion must not be 0", Toast.LENGTH_SHORT).show();
+            userTextEntryCOC.setError("Circle of Confusion must not be 0");
             displayError(INVALID_COC);
             return false;
         }
-        if(aperture < manager.getListAtThisIterator(position).getMaximumAperture() || aperture > 22){
-            Toast.makeText(this, "Aperture must be in range [1.8 22]", Toast.LENGTH_SHORT).show();
+        if(distanceInM == 0){
+            userTextEntryDistance.setError("Distance must not be 0");
+            displayError(INVALID_DISTANCE);
+            return false;
+        }
+        if(aperture < manager.getListAtThisIterator(position).getMaximumAperture() && aperture >= 1){
+            userTextEntryAperture.setError("Aperture must be bigger than Lens aperture(F value)");
             displayError(INVALID_APERTURE);
             return false;
         }
-        if(distanceInM == 0){
-            Toast.makeText(this, "Distance must not be 0", Toast.LENGTH_LONG).show();
-            displayError(INVALID_DISTANCE);
+        if(aperture > 22 || aperture < 1){
+            userTextEntryAperture.setError("Aperture value must be in [1 22]");
+            displayError(INVALID_APERTURE);
             return false;
         }
 

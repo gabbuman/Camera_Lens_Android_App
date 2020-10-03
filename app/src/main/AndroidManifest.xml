@@ -13,7 +13,7 @@
             android:name=".AddLens"
             android:label="Add a Lens"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CalculateDepthOfFieldActivity"
             android:label="Calculate depth of field values"

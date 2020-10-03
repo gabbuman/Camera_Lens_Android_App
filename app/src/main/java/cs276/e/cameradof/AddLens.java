@@ -49,6 +49,7 @@ public class AddLens extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 iconID = R.drawable.icon1;
+                Toast.makeText(AddLens.this, "Icon 1 chosen", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -57,6 +58,7 @@ public class AddLens extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 iconID = R.drawable.icon2;
+                Toast.makeText(AddLens.this, "Icon 2 chosen", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -65,6 +67,7 @@ public class AddLens extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 iconID = R.drawable.icon3;
+                Toast.makeText(AddLens.this, "Icon 3 chosen", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -73,6 +76,7 @@ public class AddLens extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 iconID = R.drawable.icon4;
+                Toast.makeText(AddLens.this, "Icon 4 chosen", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -81,6 +85,7 @@ public class AddLens extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 iconID = R.drawable.icon5;
+                Toast.makeText(AddLens.this, "Icon 5 chosen", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -89,6 +94,7 @@ public class AddLens extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 iconID = R.drawable.icon6;
+                Toast.makeText(AddLens.this, "Icon 6 chosen", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -97,6 +103,7 @@ public class AddLens extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 iconID = R.drawable.icon7;
+                Toast.makeText(AddLens.this, "Icon 7 chosen", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -105,6 +112,7 @@ public class AddLens extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 iconID = R.drawable.icon8;
+                Toast.makeText(AddLens.this, "Icon 8 chosen", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -113,6 +121,7 @@ public class AddLens extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 iconID = R.drawable.icon9;
+                Toast.makeText(AddLens.this, "Icon 9 chosen", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -146,34 +155,32 @@ public class AddLens extends AppCompatActivity {
         String userApertureString = userTextEntryAperture.getText().toString();
 
         if(userMake.isEmpty() ){
-            Toast.makeText(this, "Lens name must not be empty", Toast.LENGTH_LONG).show();
-            return false;
-        }
-        if(userApertureString.isEmpty()){
-            Toast.makeText(this, "Aperture value cannot be empty", Toast.LENGTH_LONG).show();
+            userTextEntryMake.setError("Lens name must not be empty");
             return false;
         }
         if(userFocalString.isEmpty()){
-            Toast.makeText(this, "Please enter Focal Length", Toast.LENGTH_LONG).show();
+            userTextEntryFocal.setError("Focal Length must not be empty");
+            return false;
+        }
+        if(userApertureString.isEmpty()){
+            userTextEntryAperture.setError("Aperture value must not be empty");
             return false;
         }
 
         double userAperture = Double.parseDouble(userApertureString);
         int userFocal = Integer.parseInt(userFocalString);
 
-        if(userAperture >= 1 && userAperture <=22 && userFocal >= 0) {
+        if(userAperture >= 1 && userAperture <=22 && userFocal > 0) {
             manager.add(new Lens(userMake, userAperture, (double)userFocal, iconID));
             Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
             return true;
         }
-        else if(userAperture < 1 || userAperture > 22){
-            Toast.makeText(this, "Aperture must be in [1 22] range",
-                    Toast.LENGTH_LONG).show();
+        else if(userFocal <= 0){
+            userTextEntryFocal.setError("Focal Length must be positive");
             return false;
         }
-        else if(userFocal <= 0){
-            Toast.makeText(this, "Focal Length must be non-negative",
-                    Toast.LENGTH_LONG).show();
+        else if(userAperture < 1 || userAperture > 22){
+            userTextEntryAperture.setError("Aperture must be in [1 22] range");
             return false;
         }
         return true;
