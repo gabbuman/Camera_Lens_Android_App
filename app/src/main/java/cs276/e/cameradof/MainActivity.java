@@ -8,6 +8,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 
 import android.view.Menu;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
     private LensManager manager;
     private List<Lens> myLens = new ArrayList<Lens>();
+    private ArrayAdapter<Lens> adapter;
+    private ListView list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +55,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
-    // Refresh the list after edits
+    @Override
+    public void onRestart()
+    {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
+
     @Override
     protected void onStart() {
         manager = LensManager.getInstance();
+        list.setAdapter(adapter);
         super.onStart();
     }
 
@@ -83,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
 
     // Display Lens List
     private void populateListView() {
-        ArrayAdapter<Lens> adapter = new MyListAdapter();
-        ListView list = (ListView) findViewById(R.id.listViewLens);
+        adapter = new MyListAdapter();
+        list = (ListView) findViewById(R.id.listViewLens);
         list.setAdapter(adapter);
     }
 
